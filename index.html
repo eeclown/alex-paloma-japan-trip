@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan 2025 — Alex & Paloma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0e0e0f;
+    --bg2: #141415;
+    --bg3: #1a1a1c;
+    --bg4: #222225;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e6e0;
+    --text2: #9a9891;
+    --text3: #5c5a56;
+    --red: #c8423a;
+    --red-dim: rgba(200,66,58,0.15);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.12);
+    --teal: #4a9e8a;
+    --teal-dim: rgba(74,158,138,0.12);
+    --blue: #4a7fbf;
+    --blue-dim: rgba(74,127,191,0.12);
+    --purple: #7a5faf;
+    --purple-dim: rgba(122,95,175,0.12);
+    --green: #5a9460;
+    --green-dim: rgba(90,148,96,0.12);
+    --orange: #c07a3a;
+    --orange-dim: rgba(192,122,58,0.12);
+    --font-display: 'Shippori Mincho', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 10px;
+    --radius-lg: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.6; min-height: 100vh; }
+
+  .site-header { position: sticky; top: 0; z-index: 100; background: rgba(14,14,15,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+  .header-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 1.5rem; }
+  .logo { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+  .logo-jp { font-family: var(--font-display); font-size: 18px; color: var(--red); letter-spacing: 0.05em; }
+  .logo-en { font-size: 13px; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 300; }
+  .header-stats { display: flex; gap: 1.5rem; align-items: center; }
+  .hstat { text-align: right; }
+  .hstat-val { font-size: 16px; font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums; }
+  .hstat-val.accent { color: var(--gold); }
+  .hstat-lbl { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; }
+  .header-divider { width: 1px; height: 28px; background: var(--border2); }
+
+  .sync-bar { max-width: 960px; margin: 0 auto; padding: 0.5rem 2rem 0; display: flex; align-items: center; gap: 8px; }
+  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text3); flex-shrink: 0; transition: background 0.3s; }
+  .sync-dot.synced { background: var(--green); }
+  .sync-dot.syncing { background: var(--gold); animation: pulse 0.8s infinite; }
+  .sync-dot.error { background: var(--red); }
+  .sync-label { font-size: 11px; color: var(--text3); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* TAB NAV */
+  .tab-nav { max-width: 960px; margin: 0 auto; padding: 0 2rem; display: flex; gap: 4px; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 12px 16px; font-size: 12px; font-family: var(--font-body); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; cursor: pointer; color: var(--text3); transition: color 0.15s, border-color 0.15s; margin-bottom: -1px; }
+  .tab-btn:hover { color: var(--text2); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .hero { max-width: 960px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+  .hero-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .hero-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--red); }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.15; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1rem; }
+  .hero h1 em { font-style: normal; color: var(--red); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+  .meta-pill { font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border2); color: var(--text2); background: var(--bg2); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; max-width: 960px; margin-left: auto; margin-right: auto; padding: 0 2rem; }
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; transition: border-color 0.2s; }
+  .stat-card:hover { border-color: var(--border2); }
+  .stat-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); margin-bottom: 6px; }
+  .stat-val { font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--text); }
+  .stat-val.gold { color: var(--gold); }
+  .stat-val.green { color: var(--green); }
+
+  .filter-wrap { max-width: 960px; margin: 0 auto 1.5rem; padding: 0 2rem; }
+  .filter-bar { display: flex; gap: 6px; flex-wrap: wrap; }
+  .fbtn { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-family: var(--font-body); padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border2); background: transparent; color: var(--text2); cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em; }
+  .fbtn:hover { background: var(--bg3); color: var(--text); }
+  .fbtn.active { background: var(--red); border-color: var(--red); color: #fff; }
+  .fbtn.active.jdm { background: var(--blue); border-color: var(--blue); }
+  .fbtn.active.anime { background: var(--purple); border-color: var(--purple); }
+  .fbtn.active.music { background: var(--orange); border-color: var(--orange); }
+  .fbtn.active.res { background: var(--gold); border-color: var(--gold); color: #1a1200; }
+
+  .res-alert-wrap { max-width: 960px; margin: 0 auto 1.5rem; padding: 0 2rem; }
+  .res-alert { background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25); border-radius: var(--radius-lg); padding: 1rem 1.25rem; }
+  .res-alert-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 500; margin-bottom: 0.5rem; }
+  .res-alert ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+  .res-alert li { font-size: 12px; color: var(--text2); background: var(--bg2); border: 1px solid var(--border2); border-radius: 20px; padding: 3px 12px; }
+  .res-alert li::before { content: '↗ '; color: var(--gold); }
+
+  .main { max-width: 960px; margin: 0 auto; padding: 0 2rem 4rem; }
+
+  .city-section { margin-bottom: 3rem; animation: fadeUp 0.4s ease both; }
+  .city-section:nth-child(1){animation-delay:0.05s} .city-section:nth-child(2){animation-delay:0.15s} .city-section:nth-child(3){animation-delay:0.25s} .city-section:nth-child(4){animation-delay:0.35s} .city-section:nth-child(5){animation-delay:0.4s} .city-section:nth-child(6){animation-delay:0.45s}
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+  .city-header { display: flex; align-items: center; gap: 16px; margin-bottom: 1.25rem; }
+  .city-name { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; white-space: nowrap; color: var(--text3); }
+  .city-name.tokyo{color:var(--blue)} .city-name.kyoto{color:var(--red)} .city-name.kinosaki{color:var(--teal)} .city-name.osaka{color:var(--purple)} .city-name.hakone{color:var(--orange)} .city-name.tokyo2{color:var(--blue)}
+  .city-line { flex: 1; height: 1px; background: var(--border); }
+  .city-days-count { font-size: 11px; color: var(--text3); white-space: nowrap; }
+
+  .day-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s, background 0.2s; }
+  .day-card:hover { border-color: var(--border2); }
+  .day-card.open { border-color: var(--border2); background: var(--bg3); }
+  .day-card.all-done { opacity: 0.45; }
+
+  .day-header { display: flex; align-items: center; gap: 14px; padding: 1rem 1.25rem; cursor: pointer; user-select: none; }
+  .day-num { font-family: var(--font-display); font-size: 12px; font-weight: 700; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: 0.02em; }
+  .day-num.tokyo{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(74,127,191,0.2)}
+  .day-num.kyoto{background:var(--red-dim);color:var(--red);border:1px solid rgba(200,66,58,0.2)}
+  .day-num.kinosaki{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(74,158,138,0.2)}
+  .day-num.osaka{background:var(--purple-dim);color:var(--purple);border:1px solid rgba(122,95,175,0.2)}
+  .day-num.hakone{background:var(--orange-dim);color:var(--orange);border:1px solid rgba(192,122,58,0.2)}
+  .day-num.tokyo2{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(74,127,191,0.2)}
+
+  .day-title-block { flex: 1; min-width: 0; }
+  .day-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+  .day-subtitle { font-size: 12px; color: var(--text3); margin-top: 2px; letter-spacing: 0.02em; }
+  .day-meta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+  .progress-ring-wrap { position: relative; width: 32px; height: 32px; flex-shrink: 0; }
+  .progress-ring-wrap svg { transform: rotate(-90deg); }
+  .progress-ring-bg { stroke: var(--border2); fill: none; }
+  .progress-ring-fg { fill: none; stroke-linecap: round; transition: stroke-dashoffset 0.4s ease; }
+  .ring-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 500; color: var(--text2); font-variant-numeric: tabular-nums; }
+
+  .chevron-icon { font-size: 16px; color: var(--text3); transition: transform 0.25s ease; flex-shrink: 0; }
+  .day-card.open .chevron-icon { transform: rotate(180deg); }
+
+  .day-body { display: none; padding: 0 1.25rem 1.25rem; animation: slideDown 0.2s ease; }
+  .day-card.open .day-body { display: block; }
+  @keyframes slideDown { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+
+  .sect-title { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); padding: 0.75rem 0 0.5rem; display: flex; align-items: center; gap: 8px; }
+  .sect-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .act-row { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); transition: opacity 0.2s; }
+  .act-row:last-child { border-bottom: none; }
+  .act-row.done { opacity: 0.38; }
+
+  .checkbox { width: 20px; height: 20px; border: 1.5px solid var(--border2); border-radius: 5px; cursor: pointer; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; background: transparent; }
+  .checkbox:hover { border-color: var(--green); }
+  .checkbox.checked { background: var(--green); border-color: var(--green); }
+  .checkbox.checked::after { content: ''; width: 5px; height: 9px; border: 1.5px solid #fff; border-top: none; border-left: none; transform: rotate(45deg) translateY(-1px); display: block; }
+
+  .act-content { flex: 1; min-width: 0; }
+  .act-name { font-size: 14px; color: var(--text); line-height: 1.4; }
+  .act-name.crossed { text-decoration: line-through; color: var(--text3); }
+  .act-note { font-size: 12px; color: var(--text2); margin-top: 3px; line-height: 1.5; }
+  .act-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--gold); text-decoration: none; margin-top: 4px; letter-spacing: 0.02em; transition: opacity 0.15s; }
+  .act-link:hover { opacity: 0.75; text-decoration: underline; }
+  .act-link::before { content: '→ '; }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+  .badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 500; letter-spacing: 0.03em; }
+  .badge.res{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,0.2)}
+  .badge.gem{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(74,158,138,0.2)}
+  .badge.jdm{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(74,127,191,0.2)}
+  .badge.anime{background:var(--purple-dim);color:var(--purple);border:1px solid rgba(122,95,175,0.2)}
+  .badge.food{background:rgba(201,168,76,0.08);color:#b89040;border:1px solid rgba(201,168,76,0.15)}
+  .badge.music{background:var(--orange-dim);color:var(--orange);border:1px solid rgba(192,122,58,0.2)}
+  .badge.coffee{background:rgba(139,69,19,0.1);color:#a07040;border:1px solid rgba(139,69,19,0.15)}
+
+  .bonus-block { background: rgba(74,158,138,0.05); border: 1px solid rgba(74,158,138,0.12); border-radius: var(--radius); padding: 0.75rem 1rem; margin-top: 0.75rem; }
+  .bonus-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; font-weight: 500; }
+  .paloma-block { background: rgba(192,122,58,0.05); border: 1px solid rgba(192,122,58,0.15); border-radius: var(--radius); padding: 0.75rem 1rem; margin-top: 0.75rem; }
+  .paloma-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; font-weight: 500; }
+  .backup-block { background: var(--bg4); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.75rem 1rem; margin-top: 0.75rem; }
+  .backup-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.5rem; font-weight: 500; }
+  .backup-row { padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .backup-row:last-child { border-bottom: none; }
+  .backup-name { font-size: 13px; color: var(--text2); }
+  .backup-note { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+  .dist-row { display: flex; align-items: center; gap: 10px; padding-top: 0.75rem; margin-top: 0.75rem; border-top: 1px solid var(--border); }
+  .dist-label { font-size: 12px; color: var(--text3); flex: 1; }
+  .dist-input { width: 80px; background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius); padding: 5px 10px; color: var(--text); font-size: 13px; font-family: var(--font-body); text-align: right; transition: border-color 0.15s; }
+  .dist-input:focus { outline: none; border-color: var(--gold); }
+  .dist-unit { font-size: 12px; color: var(--text3); width: 20px; }
+
+  /* BOOKING CHECKLIST TAB */
+  .booking-section { max-width: 960px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+  .bk-phase { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 8px; overflow: hidden; }
+  .bk-phase-hdr { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; cursor: pointer; user-select: none; }
+  .bk-phase-hdr:hover { background: var(--bg3); }
+  .urgency-pill { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+  .u-now { background: var(--red); color: #fff; }
+  .u-soon { background: var(--gold); color: #1a1200; }
+  .u-later { background: var(--teal); color: #0a1a17; }
+  .u-trip { background: var(--text3); color: var(--bg); }
+  .bk-phase-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; flex: 1; }
+  .bk-phase-ct { font-size: 11px; color: var(--text3); }
+  .bk-phase-chev { font-size: 14px; color: var(--text3); transition: transform 0.25s; }
+  .bk-phase.open .bk-phase-chev { transform: rotate(180deg); }
+  .bk-phase-body { display: none; border-top: 1px solid var(--border); }
+  .bk-phase.open .bk-phase-body { display: block; }
+  .bk-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 1.25rem; border-bottom: 1px solid var(--border); }
+  .bk-item:last-child { border-bottom: none; }
+  .bk-item.done-row { opacity: 0.4; }
+  .bk-item.done-row .bk-title { text-decoration: line-through; }
+  .bk-check { width: 20px; height: 20px; border: 1.5px solid var(--border2); border-radius: 5px; cursor: pointer; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; background: transparent; }
+  .bk-check:hover { border-color: var(--green); }
+  .bk-check.checked { background: var(--green); border-color: var(--green); }
+  .bk-check.checked::after { content: ''; width: 5px; height: 9px; border: 1.5px solid #fff; border-top: none; border-left: none; transform: rotate(45deg) translateY(-1px); display: block; }
+  .bk-content { flex: 1; }
+  .bk-title { font-size: 14px; color: var(--text); line-height: 1.4; }
+  .bk-desc { font-size: 12px; color: var(--text2); margin-top: 4px; line-height: 1.55; }
+  .bk-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--gold); text-decoration: none; margin-top: 5px; letter-spacing: 0.02em; }
+  .bk-link:hover { opacity: 0.75; text-decoration: underline; }
+  .bk-link::before { content: '→ '; }
+  .prog-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  .prog-lbl { display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); margin-bottom: 8px; }
+  .prog-bar { height: 4px; background: var(--border2); border-radius: 2px; overflow: hidden; }
+  .prog-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.3s; }
+  .bk-alert { background: rgba(200,66,58,0.08); border: 1px solid rgba(200,66,58,0.2); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .bk-alert strong { color: var(--red); font-weight: 500; }
+
+  /* PRACTICAL TAB */
+  .practical-section { max-width: 960px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+  .prac-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 10px; margin-bottom: 2rem; }
+  .prac-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; }
+  .prac-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text3); margin-bottom: 7px; }
+  .prac-body { font-size: 13px; color: var(--text2); line-height: 1.65; }
+  .prac-body strong { color: var(--text); font-weight: 500; }
+  .prac-body a { color: var(--gold); text-decoration: none; }
+  .prac-body a:hover { text-decoration: underline; }
+  .daytrip-block { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 8px; overflow: hidden; }
+  .daytrip-inner { display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; padding: 1.1rem 1.25rem; }
+  .daytrip-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--teal); margin-bottom: 4px; }
+  .daytrip-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); }
+  .daytrip-from { font-size: 11px; color: var(--text3); margin-top: 3px; }
+  .daytrip-desc { font-size: 13px; color: var(--text2); line-height: 1.65; }
+  .daytrip-desc strong { color: var(--text); font-weight: 500; }
+  .daytrip-desc a { color: var(--gold); text-decoration: none; }
+  .sect-h2 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text); margin: 2rem 0 1rem; letter-spacing: -0.01em; }
+
+  .scroll-top { position: fixed; bottom: 2rem; right: 2rem; width: 40px; height: 40px; background: var(--bg3); border: 1px solid var(--border2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text2); font-size: 18px; opacity: 0; transition: opacity 0.2s, background 0.15s; z-index: 50; }
+  .scroll-top.visible { opacity: 1; }
+  .scroll-top:hover { background: var(--bg4); color: var(--text); }
+
+  footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--text3); border-top: 1px solid var(--border); letter-spacing: 0.05em; }
+
+  @media (max-width: 600px) {
+    .stat-grid { grid-template-columns: repeat(2,1fr); }
+    .hero, .main, .stat-grid, .filter-wrap, .res-alert-wrap, .booking-section, .practical-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .site-header { padding: 0 1.25rem; }
+    .header-stats { gap: 1rem; }
+    .hstat-val { font-size: 14px; }
+    .daytrip-inner { grid-template-columns: 1fr; gap: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <span class="logo-jp">日本</span>
+      <span class="logo-en">Alex & Paloma · 2025</span>
+    </a>
+    <div class="header-stats">
+      <div class="hstat">
+        <div class="hstat-val accent" id="hstat-done">0</div>
+        <div class="hstat-lbl">days done</div>
+      </div>
+      <div class="header-divider"></div>
+      <div class="hstat">
+        <div class="hstat-val" id="hstat-acts">0</div>
+        <div class="hstat-lbl">checked off</div>
+      </div>
+      <div class="header-divider"></div>
+      <div class="hstat">
+        <div class="hstat-val" id="hstat-km">0</div>
+        <div class="hstat-lbl">km traveled</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div style="background:rgba(14,14,15,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('itinerary',this)">Itinerary</button>
+    <button class="tab-btn" onclick="switchTab('booking',this)">Book Now</button>
+    <button class="tab-btn" onclick="switchTab('practical',this)">Practical</button>
+  </div>
+</div>
+
+<!-- ══════════════════ ITINERARY TAB ══════════════════ -->
+<div id="tab-itinerary" class="tab-panel active">
+
+<section class="hero">
+  <div class="hero-label">17 days · Spring 2025</div>
+  <h1>Tokyo · Hakone · Kyoto · Kinosaki · <em>Osaka</em></h1>
+  <div class="hero-meta">
+    <span class="meta-pill">6 days Tokyo (arrival)</span>
+    <span class="meta-pill">1 day Hakone</span>
+    <span class="meta-pill">4 days Kyoto</span>
+    <span class="meta-pill">2 days Kinosaki</span>
+    <span class="meta-pill">3 days Osaka</span>
+    <span class="meta-pill">1 day Tokyo (return)</span>
+    <span class="meta-pill">JDM · Anime · Vinyl · Coffee · Art</span>
+  </div>
+  <div class="sync-bar" style="padding:0;margin-top:0.5rem">
+    <div class="sync-dot" id="sync-dot"></div>
+    <span class="sync-label" id="sync-label">Connecting…</span>
+  </div>
+</section>
+
+<div class="stat-grid">
+  <div class="stat-card"><div class="stat-lbl">Total days</div><div class="stat-val">17</div></div>
+  <div class="stat-card"><div class="stat-lbl">Completed</div><div class="stat-val gold" id="stat-done">0</div></div>
+  <div class="stat-card"><div class="stat-lbl">Checked off</div><div class="stat-val" id="stat-acts">0 <span style="font-size:16px;color:var(--text3)" id="stat-total-acts">/ 0</span></div></div>
+  <div class="stat-card"><div class="stat-lbl">km traveled</div><div class="stat-val green" id="stat-km">0</div></div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-bar">
+    <button class="fbtn active" onclick="setFilter('all',this)">All days</button>
+    <button class="fbtn" onclick="setFilter('tokyo',this)">Tokyo I</button>
+    <button class="fbtn" onclick="setFilter('hakone',this)">Hakone</button>
+    <button class="fbtn" onclick="setFilter('kyoto',this)">Kyoto</button>
+    <button class="fbtn" onclick="setFilter('kinosaki',this)">Kinosaki</button>
+    <button class="fbtn" onclick="setFilter('osaka',this)">Osaka</button>
+    <button class="fbtn" onclick="setFilter('tokyo2',this)">Tokyo II</button>
+    <button class="fbtn jdm" onclick="setFilter('jdm',this)">🏎 JDM</button>
+    <button class="fbtn anime" onclick="setFilter('anime',this)">⛩ Anime/Hobby</button>
+    <button class="fbtn music" onclick="setFilter('music',this)">🎵 Music/Vinyl</button>
+    <button class="fbtn res" onclick="setFilter('res',this)">🎟 Needs booking</button>
+  </div>
+</div>
+
+<div class="res-alert-wrap">
+  <div class="res-alert">
+    <div class="res-alert-title">⚠ Book these now — limited availability</div>
+    <ul>
+      <li><a href="https://www.ghibli-museum.jp/en/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Ghibli Museum (3 months ahead)</a></li>
+      <li><a href="https://www.shibuya-sky.jp/en/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Shibuya Sky</a></li>
+      <li><a href="https://www.teamlab.art/e/borderless-azabudai/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">TeamLab Borderless</a></li>
+      <li><a href="https://www.booking.com/searchresults.html?ss=Hakone+Ryokan" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Hakone Ryokan (private onsen)</a></li>
+      <li><a href="https://www.kinosaki-spa.gr.jp/en/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Kinosaki Ryokan</a></li>
+      <li><a href="https://www.odakyu.jp/english/romancecar/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Romancecar to Hakone</a></li>
+      <li><a href="https://tableall.com/en" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Omakase counter (6+ months out)</a></li>
+    </ul>
+  </div>
+</div>
+
+<main class="main" id="main-itinerary"></main>
+
+</div><!-- /tab-itinerary -->
+
+<!-- ══════════════════ BOOKING TAB ══════════════════ -->
+<div id="tab-booking" class="tab-panel">
+<div class="booking-section">
+  <div class="hero-label" style="padding-top:1rem">Book in order · Check off as done</div>
+  <h2 style="font-family:var(--font-display);font-size:clamp(22px,4vw,38px);font-weight:700;margin-bottom:1.5rem;letter-spacing:-0.02em">Planning Checklist</h2>
+
+  <div class="bk-alert"><strong>Fall = Japan's most competitive travel window.</strong> Late October–November foliage season fills ryokans, omakase counters, and boutique hotels months in advance. Complete Phase 1 before you finalize your flights.</div>
+
+  <div class="prog-wrap">
+    <div class="prog-lbl"><span>Planning progress</span><span id="prog-txt">0 of 20 done</span></div>
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="bk-phase open" id="bkp1">
+    <div class="bk-phase-hdr" onclick="toggleBkPhase('bkp1')">
+      <span class="urgency-pill u-now">Now</span>
+      <span class="bk-phase-title">Book Immediately / 6–12 Months Out</span>
+      <span class="bk-phase-ct">6 items</span>
+      <span class="bk-phase-chev">↓</span>
+    </div>
+    <div class="bk-phase-body">
+      <div class="bk-item" id="bki1">
+        <div class="bk-check" onclick="tickBk('bki1')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Flights</strong> — SAN → NRT (Tokyo Narita), round-trip</div>
+          <div class="bk-desc">JAL and ANA fly direct SAN→NRT (~11hrs). JAL opens 360 days ahead, ANA 355. Round-trip into/out of Tokyo eliminates backtracking from Osaka at the end.</div>
+          <a class="bk-link" href="https://www.google.com/flights?hl=en#flt=SAN.NRT." target="_blank">Search flights ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki2">
+        <div class="bk-check" onclick="tickBk('bki2')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>JR Pass</strong> — 21-day, buy before leaving the US</div>
+          <div class="bk-desc">Cheaper abroad. Covers all Shinkansen (Hikari/Sakura, not Nozomi) + regional JR lines. Activate on Day 1 at Narita. Key routes: Tokyo↔Hakone, Tokyo→Kyoto (2h15m), Kyoto↔Osaka, Osaka→Tokyo for departure.</div>
+          <a class="bk-link" href="https://www.jrpass.com/buy-the-jr-pass-online" target="_blank">Buy JR Pass ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki3">
+        <div class="bk-check" onclick="tickBk('bki3')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Hakone Ryokan</strong> — private onsen room, 1 night</div>
+          <div class="bk-desc">Fall foliage demand is extreme. Private rotenburo rooms go months ahead. Look in Gora or Miyagino. Dinner-inclusive plans (~¥30,000/person) strongly recommended — avoids the evening restaurant hunt in a mountain town. Mt. Fuji views weather permitting.</div>
+          <a class="bk-link" href="https://www.booking.com/searchresults.html?ss=Hakone+Ryokan" target="_blank">Search Hakone ryokans ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki4">
+        <div class="bk-check" onclick="tickBk('bki4')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Ghibli Museum</strong> — mandatory advance tickets</div>
+          <div class="bk-desc">No walk-ins. Ever. Buy 3 months ahead via Lawson or the international portal. Sells out same day tickets open.</div>
+          <a class="bk-link" href="https://www.ghibli-museum.jp/en/" target="_blank">Official tickets ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki5">
+        <div class="bk-check" onclick="tickBk('bki5')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Kinosaki Ryokan</strong> — weeks/months ahead in peak season</div>
+          <div class="bk-desc">The strongest differentiator of the whole trip. Book before any Tokyo hotel.</div>
+          <a class="bk-link" href="https://www.kinosaki-spa.gr.jp/en/" target="_blank">Kinosaki tourism ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki6">
+        <div class="bk-check" onclick="tickBk('bki6')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Omakase Sushi</strong> — Tokyo counter, pre-book 6+ months</div>
+          <div class="bk-desc">The best counters are fully booked 6+ months ahead. Use Tableall (paid concierge, ¥8,000/seat fee — worth it for the hardest spots), Ikyu, or hotel concierge. Target ¥15,000–25,000/person — extraordinary value for the quality level.</div>
+          <a class="bk-link" href="https://tableall.com/en" target="_blank">Tableall ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="bk-phase open" id="bkp2">
+    <div class="bk-phase-hdr" onclick="toggleBkPhase('bkp2')">
+      <span class="urgency-pill u-soon">Soon</span>
+      <span class="bk-phase-title">4–6 Months Out</span>
+      <span class="bk-phase-ct">5 items</span>
+      <span class="bk-phase-chev">↓</span>
+    </div>
+    <div class="bk-phase-body">
+      <div class="bk-item" id="bki7">
+        <div class="bk-check" onclick="tickBk('bki7')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Kaiseki Dinner</strong> — Kyoto, book 3–6 months ahead</div>
+          <div class="bk-desc">Kyoto is the home of kaiseki — multi-course seasonal Japanese tasting menu. ¥12,000–20,000/person at a respected mid-range spot will be one of the best restaurant experiences of your life. Use Tablecheck, Tableall, or Ikyu.</div>
+          <a class="bk-link" href="https://www.tablecheck.com/en/japan/reserve" target="_blank">Tablecheck ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki8">
+        <div class="bk-check" onclick="tickBk('bki8')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>TeamLab Borderless</strong> — Tokyo, timed-entry tickets</div>
+          <div class="bk-desc">Reopened 2024 at Azabudai Hills. Genuinely extraordinary — immersive, nothing else like it. Book directly from official site. Earliest weekday slot to avoid crowds. Allow 3+ hours inside.</div>
+          <a class="bk-link" href="https://www.teamlab.art/e/borderless-azabudai/" target="_blank">Buy tickets ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki9">
+        <div class="bk-check" onclick="tickBk('bki9')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Shibuya Sky</strong> — rooftop observation deck</div>
+          <div class="bk-desc">Open-air rooftop. The Scramble crossing from above at magic hour, then at night, is genuinely extraordinary. Book online to skip the queue.</div>
+          <a class="bk-link" href="https://www.shibuya-sky.jp/en/" target="_blank">Book Shibuya Sky ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki10">
+        <div class="bk-check" onclick="tickBk('bki10')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Tokyo Hotels</strong> — Shimokitazawa or Nakameguro area</div>
+          <div class="bk-desc">Central to both sets of interests, great neighborhood energy. Shimokitazawa for records/live music; Nakameguro for coffee/canal walks. Book refundable rates where possible.</div>
+          <a class="bk-link" href="https://www.booking.com/searchresults.html?ss=Shimokitazawa+Tokyo" target="_blank">Search ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki11">
+        <div class="bk-check" onclick="tickBk('bki11')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Travel Insurance</strong></div>
+          <div class="bk-desc">Japan is safe but medical costs are high without coverage. Buy within 14 days of your first deposit to maximize what's covered. Get a policy covering trip cancellation — useful if you've prepaid expensive restaurant bookings.</div>
+          <a class="bk-link" href="https://www.squaremouth.com/" target="_blank">Compare ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="bk-phase" id="bkp3">
+    <div class="bk-phase-hdr" onclick="toggleBkPhase('bkp3')">
+      <span class="urgency-pill u-later">Later</span>
+      <span class="bk-phase-title">1–3 Months Out</span>
+      <span class="bk-phase-ct">5 items</span>
+      <span class="bk-phase-chev">↓</span>
+    </div>
+    <div class="bk-phase-body">
+      <div class="bk-item" id="bki12">
+        <div class="bk-check" onclick="tickBk('bki12')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Romancecar to Hakone</strong> — Odakyu limited-express</div>
+          <div class="bk-desc">Scenic reserved-seat train Shinjuku → Hakone-Yumoto (~1hr 40min). Panoramic windows, mountain scenery. Opens ~2 months ahead. Book on Odakyu website directly.</div>
+          <a class="bk-link" href="https://www.odakyu.jp/english/romancecar/" target="_blank">Book Romancecar ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki13">
+        <div class="bk-check" onclick="tickBk('bki13')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Shinkansen Seat Reservations</strong></div>
+          <div class="bk-desc">JR reservations open exactly 1 month before travel at 10am JST. Use SmartEX app (set up before you leave) or reserve at JR ticket offices after arrival. Key: Tokyo→Kyoto, Kyoto→Osaka, Osaka→Tokyo (for departure).</div>
+          <a class="bk-link" href="https://smartex.jr-central.co.jp/en/" target="_blank">SmartEX app ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki14">
+        <div class="bk-check" onclick="tickBk('bki14')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Pocket WiFi or eSIM</strong></div>
+          <div class="bk-desc">Google Maps and Google Translate camera are essential daily tools. Get a pocket wifi (pick up at Narita) or set up an eSIM before you go. IIJmio and Ubigi are solid eSIM options. eConnect Japan for pocket wifi.</div>
+          <a class="bk-link" href="https://www.econnectjapan.com/" target="_blank">eConnect ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki15">
+        <div class="bk-check" onclick="tickBk('bki15')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Suica / Apple Pay Japan</strong></div>
+          <div class="bk-desc">Suica IC card works for every subway, bus, convenience store, and vending machine. iPhone users can add Suica to Apple Pay before you leave and use it immediately on arrival. Or pick up a physical Welcome Suica at Narita JR East machines.</div>
+          <a class="bk-link" href="https://www.jreast.co.jp/e/welcomesuica/" target="_blank">Info ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki16">
+        <div class="bk-check" onclick="tickBk('bki16')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Tokyo Skytree tickets</strong></div>
+          <div class="bk-desc">Tembo Deck at dusk. Book tickets in advance to skip the queue at the top of Day 1.</div>
+          <a class="bk-link" href="https://www.tokyo-skytree.jp/en/" target="_blank">Buy tickets ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="bk-phase" id="bkp4">
+    <div class="bk-phase-hdr" onclick="toggleBkPhase('bkp4')">
+      <span class="urgency-pill u-trip">On Trip</span>
+      <span class="bk-phase-title">1–2 Weeks Before / On Arrival</span>
+      <span class="bk-phase-ct">4 items</span>
+      <span class="bk-phase-chev">↓</span>
+    </div>
+    <div class="bk-phase-body">
+      <div class="bk-item" id="bki17">
+        <div class="bk-check" onclick="tickBk('bki17')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Live House Show Tickets</strong></div>
+          <div class="bk-desc">Check venue Instagram accounts and Resident Advisor Japan 1–2 weeks out. Buy via LivePocket, e+, or Pia. @shinjukuloft, @womb_tokyo, @gattaca_kyoto, @conpass_osaka for upcoming shows. Many shows have door spots but advance saves ~¥500. Small rooms sell out.</div>
+          <a class="bk-link" href="https://ra.co/events/jp/tokyo" target="_blank">RA Japan ↗</a>
+        </div>
+      </div>
+      <div class="bk-item" id="bki18">
+        <div class="bk-check" onclick="tickBk('bki18')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Download Offline Maps + Apps</strong></div>
+          <div class="bk-desc">Before flying: offline Google Maps for Tokyo, Kyoto, and Osaka; Japanese translation pack; DeepL; Hyperdia or Jorudan (train times); Tabelog; GO app for late-night taxis. Set up SmartEX for Shinkansen reservations.</div>
+        </div>
+      </div>
+      <div class="bk-item" id="bki19">
+        <div class="bk-check" onclick="tickBk('bki19')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Notify Bank + Pack Cash</strong></div>
+          <div class="bk-desc">Notify cards you'll be in Japan. Japan is still very cash-heavy — live houses, record shops, vintage stores, small ramen counters. Carry ¥30,000–50,000 at all times. ATMs at 7-Eleven and Japan Post reliably accept foreign cards.</div>
+        </div>
+      </div>
+      <div class="bk-item" id="bki20">
+        <div class="bk-check" onclick="tickBk('bki20')"></div>
+        <div class="bk-content">
+          <div class="bk-title"><strong>Yamato Luggage Forwarding</strong> — plan for vinyl + shopping</div>
+          <div class="bk-desc">Yamato "takkyubin" ships bags between hotels overnight (~¥1,500–2,500/bag) or direct to international addresses. Essential if you buy records, model kits, or clothes. Set up at any convenience store or hotel front desk — no account needed.</div>
+          <a class="bk-link" href="https://www.yamatogroup.co.jp/en/services/ta-q-bin/" target="_blank">Yamato info ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /tab-booking -->
+
+<!-- ══════════════════ PRACTICAL TAB ══════════════════ -->
+<div id="tab-practical" class="tab-panel">
+<div class="practical-section">
+  <div class="hero-label" style="padding-top:1rem">Trip logistics · Links · Day trips</div>
+  <h2 style="font-family:var(--font-display);font-size:clamp(22px,4vw,38px);font-weight:700;margin-bottom:1.5rem;letter-spacing:-0.02em">Practical Info</h2>
+
+  <div class="prac-grid">
+    <div class="prac-card">
+      <div class="prac-lbl">Full Route</div>
+      <div class="prac-body"><strong>Tokyo I</strong> (Days 1–6) → Hakone overnight (Day 7) → Kyoto (Days 8–11) → Kinosaki (Days 12–13) → Osaka (Days 14–16) → <strong>Tokyo II</strong> (Day 17) → fly home from NRT</div>
+    </div>
+    <div class="prac-card">
+      <div class="prac-lbl">Getting Around</div>
+      <div class="prac-body"><a href="https://www.jrpass.com/buy-the-jr-pass-online" target="_blank">21-day JR Pass</a> for all Shinkansen. Suica for subways + daily life. <a href="https://go.goinc.jp/en/" target="_blank">GO app</a> for late-night taxis. Walk Shimokitazawa, Koenji, Nakameguro. Rent a car only for Daikoku Futo PA run.</div>
+    </div>
+    <div class="prac-card">
+      <div class="prac-lbl">Budget</div>
+      <div class="prac-body">~$150–200/day covers accommodation, food, entry fees, and some shopping. Live houses: ¥2,000–4,000 + drink. Records/models: budget what your bags can handle. Convenience stores (7-Eleven, FamilyMart) are genuinely great for cheap breakfasts.</div>
+    </div>
+    <div class="prac-card">
+      <div class="prac-lbl">Foliage (if Spring)</div>
+      <div class="prac-body">Cherry blossom typically peaks late March–early April in Kyoto. Check <a href="https://www.japan-guide.com/e/e2011_where.html" target="_blank">Japan Guide's forecast</a> (updated in real time each season). Maruyama Park, Philosopher's Path, and Arashiyama are the classic Kyoto spots.</div>
+    </div>
+    <div class="prac-card">
+      <div class="prac-lbl">Music + Records</div>
+      <div class="prac-body"><a href="https://ra.co/events/jp/tokyo" target="_blank">RA Japan</a> for live lineups · <a href="https://diskunion.net/" target="_blank">Disk Union</a> multi-floor · <a href="https://www.jetsetrecords.net/" target="_blank">Jet Set</a> (house/techno) · Flash Disc Ranch · <a href="https://bigloverecords.jp/" target="_blank">Big Love Records</a> (Harajuku, IPA on tap)</div>
+    </div>
+    <div class="prac-card">
+      <div class="prac-lbl">Coffee Circuit</div>
+      <div class="prac-body"><a href="https://www.onibuscoffee.com/" target="_blank">Onibus</a> (Nakameguro) · <a href="https://koffee-mameya.com/en/" target="_blank">Koffee Mameya</a> (Omotesando) · <a href="https://www.fuglen.com/pages/fuglen-tokyo" target="_blank">Fuglen</a> (Tomigaya) · Bear Pond (Shimokitazawa) · <a href="https://www.weekenderscoffee.com/" target="_blank">Weekenders</a> (Kyoto, weekends only) · <a href="https://www.kaikado.jp/english/cafe/" target="_blank">Kaikado Café</a> (Kyoto, 150-year workshop) · <a href="https://www.graphcoffee.jp/" target="_blank">Graph</a> (Osaka)</div>
+    </div>
+    <div class="prac-card">
+      <div class="prac-lbl">Key Booking Links</div>
+      <div class="prac-body"><a href="https://tabelog.com/en/" target="_blank">Tabelog</a> (restaurants) · <a href="https://tableall.com/en" target="_blank">Tableall</a> (hard-to-book counters) · <a href="https://www.hyperdia.com/" target="_blank">Hyperdia</a> (trains) · <a href="https://smartex.jr-central.co.jp/en/" target="_blank">SmartEX</a> (Shinkansen reservations) · <a href="https://www.2121designsight.jp/en/" target="_blank">21_21 Design Sight</a> · <a href="https://www.mori.art.museum/en/" target="_blank">Mori Art Museum</a></div>
+    </div>
+    <div class="prac-card">
+      <div class="prac-lbl">Luggage + Shipping</div>
+      <div class="prac-body"><a href="https://www.yamatogroup.co.jp/en/services/ta-q-bin/" target="_blank">Yamato takkyubin</a> ships bags between hotels overnight (~¥1,500–2,500/bag) or direct to international addresses. Essential for vinyl and model kit hauls. Set up at any convenience store — no account needed. Narita has a tax refund counter for large purchases.</div>
+    </div>
+  </div>
+
+  <div class="sect-h2">Day Trips Worth Taking</div>
+
+  <div class="daytrip-block">
+    <div class="daytrip-inner">
+      <div>
+        <div class="daytrip-label">From Tokyo</div>
+        <div class="daytrip-name">Nikko</div>
+        <div class="daytrip-from">~2hrs by JR from Shinjuku · Covered by JR Pass</div>
+      </div>
+      <div class="daytrip-desc">Insanely ornate <strong>Toshogu Shrine</strong> buried in cedar forests and fall foliage. The gilded lacquerwork feels almost delirious. Best mid-November for peak red maples. Combine with Chuzenji Lake. Highly recommended swap if you want a quieter day. <a href="https://www.japan-guide.com/e/e3800.html" target="_blank">Plan your visit →</a></div>
+    </div>
+  </div>
+
+  <div class="daytrip-block">
+    <div class="daytrip-inner">
+      <div>
+        <div class="daytrip-label">From Tokyo</div>
+        <div class="daytrip-name">Kamakura</div>
+        <div class="daytrip-from">~1hr by JR from Shinjuku · Covered by JR Pass</div>
+      </div>
+      <div class="daytrip-desc">The Great Buddha. Sea-facing temples. Bamboo groves without the Arashiyama crowds. The coastal <strong>Enoden tram</strong> is one of the best short train rides in Japan. Strong café culture near Hase station. Good swap for a day if Tokyo museum fatigue sets in. <a href="https://www.japan-guide.com/e/e2350.html" target="_blank">Plan your visit →</a></div>
+    </div>
+  </div>
+
+  <div class="daytrip-block">
+    <div class="daytrip-inner">
+      <div>
+        <div class="daytrip-label">From Osaka / Kyoto</div>
+        <div class="daytrip-name">Nara</div>
+        <div class="daytrip-from">45min from Kyoto or Osaka · Kintetsu Line</div>
+      </div>
+      <div class="daytrip-desc"><strong>Todai-ji</strong> (one of the largest wooden structures on Earth) + 1,200 freely roaming deer that will headbutt you for crackers. Naramachi backstreet cafés are genuinely charming. <strong>Kasuga Taisha Shrine</strong> with hundreds of stone lanterns lining a forested path. Already on Day 14 of the itinerary — swap to this tab for the links. <a href="https://www.japan-guide.com/e/e4103.html" target="_blank">Plan your visit →</a></div>
+    </div>
+  </div>
+
+  <div class="daytrip-block">
+    <div class="daytrip-inner">
+      <div>
+        <div class="daytrip-label">From Kyoto / En Route</div>
+        <div class="daytrip-name">Toyota Museum</div>
+        <div class="daytrip-from">Nagoya stop · 40min Shinkansen from Kyoto</div>
+      </div>
+      <div class="daytrip-desc">Best as an optional stop en route between Tokyo and Kyoto. The <strong>Toyota Automobile Museum</strong> in Nagoya is world-class for JDM history — production Celicas, Supras, genuine 2000GTs, full racing history. Allow 3–4 hours. Check Shinkansen schedule for a convenient stopover day. <a href="https://www.toyota.co.jp/Museum/en/" target="_blank">Museum info →</a></div>
+    </div>
+  </div>
+</div>
+</div><!-- /tab-practical -->
+
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<footer>日本 · 2025 — Alex & Paloma · Changes sync across both phones in real time</footer>
+
+<script>
+// ── SUPABASE CONFIG ──
+const SB_URL = 'https://fwpgsauiozrlemrfqzxk.supabase.co';
+const SB_KEY = 'sb_publishable_rRJiCiCt_nUL7kKi7qUO7Q_hgfJf4Ym';
+const TABLE  = 'trip_state';
+
+async function sbFetch(method, body) {
+  const opts = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY,
+      'Prefer': method === 'POST' ? 'resolution=merge-duplicates,return=minimal' : ''
+    }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const url = SB_URL + '/rest/v1/' + TABLE;
+  const res = await fetch(method === 'GET' ? url + '?select=key,value' : url, opts);
+  if (!res.ok) throw new Error(await res.text());
+  if (method === 'GET') return res.json();
+  return null;
+}
+
+async function loadFromDB() {
+  const rows = await sbFetch('GET');
+  const state = {};
+  rows.forEach(r => { try { state[r.key] = JSON.parse(r.value); } catch(e) { state[r.key] = r.value; } });
+  return state;
+}
+
+async function saveKey(key, value) {
+  await sbFetch('POST', [{ key, value: JSON.stringify(value), updated_at: new Date().toISOString() }]);
+}
+
+const pending = {};
+function debounceSave(key, value, delay=600) {
+  clearTimeout(pending[key]);
+  pending[key] = setTimeout(() => saveKey(key, value).catch(console.error), delay);
+}
+
+// ── DATA ──
+const DAYS = [
+  { id:1, city:'tokyo', num:'D1', title:'Asakusa & Old Tokyo', subtitle:'temples · knife street · skytree',
+    primary:[
+      { name:'Sensō-ji Temple', note:'Arrive before 8am to beat crowds. The main gate at dawn is stunning.', badges:['gem'] },
+      { name:'Nakamise Shopping Street', note:'Pick up omiyage early — gets crowded fast.', badges:[] },
+      { name:'Kappabashi Kitchen Street', note:'Japanese knives, ceramics, restaurant supplies. Way more unique than any viral café.', badges:['gem'], link:{text:'Google Maps',url:'https://maps.google.com/?q=Kappabashi+Street+Tokyo'} },
+      { name:'Yanaka backstreet wander', note:'Tokyo\'s best-preserved old town after Asakusa — craftsmen\'s shops, cats everywhere, almost no tourists. Walk south from Ueno.', badges:['gem'] },
+      { name:'Tokyo Skytree (evening)', note:'Tembo Deck at dusk. Book tickets in advance.', badges:['res'], link:{text:'Buy tickets',url:'https://www.tokyo-skytree.jp/en/'} },
+    ],
+    bonus:[
+      { name:'Hoppy Street (Hoppy-dori)', note:'Retro bar street behind Senso-ji. Cheap yakitori and cold beer. Very local.', badges:['food','gem'] },
+      { name:'Ekimise basement food hall', note:'Cheap sushi sets and street food under the Asakusa station complex.', badges:['food'] },
+    ],
+    backup:[
+      { name:'Tokyo National Museum — Ueno', note:'Best Japanese art & history museum. Easy half-day.', link:{text:'Museum site',url:'https://www.tnm.jp/?lang=en'} },
+      { name:'Ameyoko Market, Ueno', note:'Lively discount market street, fresh seafood stalls.' },
+    ]
+  },
+  { id:2, city:'tokyo', num:'D2', title:'Shimokitazawa — Records & Live Music', subtitle:'vinyl · live houses · vintage · bear pond',
+    primary:[
+      { name:'Bear Pond Espresso', note:'Legendarily strict, closes early. The espresso is worth the reputation. Go first thing.', badges:['coffee','gem'], link:{text:'Bear Pond',url:'https://bear-pond.com/'} },
+      { name:'Jet Set Records', note:'Contemporary Japanese releases, house, techno. One of the best specialty shops in the city.', badges:['music','gem'], link:{text:'Jet Set',url:'https://www.jetsetrecords.net/'} },
+      { name:'Flash Disc Ranch', note:'Vintage sound system, famous 3-for-¥2,000 bin. Pure treasure-hunt energy.', badges:['music','gem'] },
+      { name:'City Country City', note:'Musician-owned, 4th floor, tiny — also serves pasta and coffee. Insider Tokyo record culture.', badges:['music','gem'], link:{text:'CCC',url:'https://citycountrycity.com/'} },
+      { name:'Shelter live house (evening)', note:'Classic Shimokitazawa venue. Check RA Japan for lineup. Door ¥2,000–3,000 + drink ticket.', badges:['music','res'], link:{text:'Shelter',url:'https://www.loft-prj.co.jp/shelter/'} },
+    ],
+    bonus:[
+      { name:'Coconuts Disk', note:'Cozy record shop with plants and trinkets everywhere. Known for its warm atmosphere.', badges:['music'] },
+      { name:'Vintage shopping the shotengai', note:'Shimokitazawa backstreets — stores that fled Harajuku\'s commercialization. More interesting per meter.', badges:['gem'] },
+    ],
+    backup:[
+      { name:'Omoide Yokocho, Shinjuku', note:'Narrow smoke-filled alley of tiny yakitori stalls. Open since post-war era. Squeeze in, order skewers and beer.', badges:['food','gem'] },
+      { name:'Harmonica Yokocho, Kichijoji', note:'Post-war lantern-lit maze of ~100 tiny bars. More local and less touristy than Golden Gai. Best after 8pm.', badges:['food','gem'] },
+    ]
+  },
+  { id:3, city:'tokyo', num:'D3', title:'Akihabara + Nakano Broadway', subtitle:'hobby · gunpla · retro · scale models',
+    primary:[
+      { name:'Akihabara hobby floor crawl', note:'Start at Yodobashi Akiba basement floors. Work your way up.', badges:['anime'] },
+      { name:'Volks Hobby Shop Akihabara', note:'Scale figure kits and resin. Multiple floors.', badges:['anime'], link:{text:'Volks site',url:'https://www.volks.co.jp/'} },
+      { name:'Yellow Submarine', note:'Retro games, models, figures. Pure treasure-hunt energy.', badges:['anime','gem'] },
+      { name:'Tamiya Store', note:'Pilgrimage site for scale modelers.', badges:['anime'], link:{text:'Tamiya',url:'https://www.tamiya.com/'} },
+      { name:'Nakano Broadway (afternoon)', note:'Take the Chuo line west. Vintage figures, retro games, model kits — often better prices than Akihabara. More authentic hunting experience.', badges:['anime','gem'] },
+    ],
+    bonus:[
+      { name:'Super Potato Akihabara', note:'Three floors of retro hardware and cartridges back to Famicom era.', badges:['anime','gem'] },
+      { name:'Kotobukiya Akihabara', note:'Premium figure kits, exclusives. Must-hit for scale modelers.', badges:['anime'] },
+      { name:'Radio Kaikan building', note:'Multi-tenant otaku building — floors of independent dealers for rare finds.', badges:['anime'] },
+    ],
+    backup:[
+      { name:'Taito Station / SEGA Arcades', note:'Rhythm games, claw machines, classic cabinets.' },
+      { name:'Koenji underground', note:'Be-In Records (25-year punk institution) · Los Apson (techno/electronic hidden gem) · Jirokichi live house (open since 1975).', badges:['music','gem'] },
+    ]
+  },
+  { id:4, city:'tokyo', num:'D4', title:'Nakameguro + Koenji', subtitle:'coffee · canal · records · live music',
+    primary:[
+      { name:'Onibus Coffee', note:'Traditional Japanese house 2m from the train tracks. Own roasts, rotating single origins. One of the best in Tokyo.', badges:['coffee','gem'], link:{text:'Onibus',url:'https://www.onibuscoffee.com/'} },
+      { name:'Meguro River canal walk', note:'Tree-lined, stunning in fall. Small galleries and boutiques tucked alongside. Walk toward Daikanyama.', badges:['gem'] },
+      { name:'Ella Records, Nakameguro', note:'Warm wood interior, Japanese classics + jazz + rock. Listening stations by sunny windows.', badges:['music','gem'], link:{text:'Ella Records',url:'https://www.ellarecords.net/'} },
+      { name:'Koenji record loop (afternoon)', note:'Be-In Records (25-year punk institution) · Los Apson (techno/electronic, hidden gem) · Enban (experimental — once walked into a throat singing lecture).', badges:['music','gem'] },
+      { name:'Jirokichi or Koenji High (evening)', note:'Jirokichi: open since 1975, musicians on same floor as audience, every wall covered in handwritten artist names. No stage.', badges:['music','gem'], link:{text:'Koenji High',url:'https://www.koenji-high.com/'} },
+    ],
+    bonus:[
+      { name:'Tsutaya T-Site, Daikanyama', note:'Three connected buildings: books, music, design. Coffee inside. A local intellectual retreat, not a tourist trap.', badges:['gem'], link:{text:'T-Site',url:'https://store.tsite.jp/daikanyama/english/'} },
+      { name:'Fuglen Tokyo', note:'Norwegian-Japanese collab in Tomigaya. Excellent coffee by day, natural wine and cocktails by night.', badges:['coffee','gem'], link:{text:'Fuglen',url:'https://www.fuglen.com/pages/fuglen-tokyo'} },
+    ],
+    backup:[
+      { name:'Jimbocho used book district', note:'Tokyo\'s legendary secondhand book district — 180+ shops. Japanese woodblock prints, vintage manga, foreign art books. Even without reading Japanese the photography sections are extraordinary.', badges:['gem'] },
+      { name:'Harmonica Yokocho, Kichijoji', note:'Post-war lantern-lit maze of ~100 tiny bars. Best after 8pm when red lanterns glow.', badges:['food','gem'] },
+    ]
+  },
+  { id:5, city:'tokyo', num:'D5', title:'Ghibli Day', subtitle:'museum · kichijoji · inokashira park',
+    primary:[
+      { name:'Ghibli Museum, Mitaka', note:'ADVANCE TICKETS MANDATORY — buy 3 months ahead via Lawson or international site. No walk-ins at all.', badges:['res','anime'], link:{text:'Official tickets',url:'https://www.ghibli-museum.jp/en/'} },
+      { name:'Inokashira Park', note:'Adjacent to museum. Rowboat rentals on the pond. Walk here after.', badges:[] },
+      { name:'Kichijoji neighborhood explore', note:'Harmonica Yokocho alley for evening drinks. Very local feel.', badges:['food'] },
+    ],
+    bonus:[
+      { name:'Shibuya PARCO', note:'Nintendo Tokyo and Pokémon Center inside. Multiple hobby floors.', badges:['anime','gem'] },
+      { name:'Shimokitazawa revisit', note:'If you want more vinyl or caught a show on Day 2. Cat Street in Harajuku for independent boutiques.', badges:['music'] },
+    ],
+    backup:[
+      { name:'TeamLab Borderless (if Ghibli fails)', note:'Book in advance. Immersive digital art. Extraordinary backup.', badges:['res'], link:{text:'Tickets',url:'https://www.teamlab.art/e/borderless-azabudai/'} },
+      { name:'Kamakura day trip', note:'~1hr by JR. Great Buddha, sea-facing temples, Enoden tram. Good swap if Tokyo museum fatigue sets in.', link:{text:'Plan',url:'https://www.japan-guide.com/e/e2350.html'} },
+    ]
+  },
+  { id:6, city:'tokyo', num:'D6', title:'JDM Day — A-PIT + Daikoku', subtitle:'autobacs · shibuya sky · car meet',
+    primary:[
+      { name:'A-PIT Autobacs Shinonome', note:'Multi-level car culture mecca. Parts, accessories, race-prepped cars on display. Genuine enthusiast pilgrimage.', badges:['jdm'], link:{text:'A-PIT site',url:'https://www.autobacs.com/jp/shop/apit_shinonome/'} },
+      { name:'Odaiba / Unicorn Gundam', note:'Free outdoor Gundam statue while in the bay area. Worth the detour.', badges:['anime','gem'] },
+      { name:'Gundam Base Tokyo (DiverCity)', note:'Flagship Gundam store. Largest selection in Japan.', badges:['anime'], link:{text:'Gundam Base',url:'https://p-bandai.jp/gundam-base/tokyo/'} },
+      { name:'Shibuya Sky (sunset)', note:'Rooftop observation deck. The Scramble crossing from above at magic hour is genuinely extraordinary. Book ahead.', badges:['res','gem'], link:{text:'Book tickets',url:'https://www.shibuya-sky.jp/en/'} },
+      { name:'Daikoku Futo PA (late evening)', note:'Starts filling ~8-9pm. GT-Rs, Supras, RX-7s, NSXs. Check social media day-of. May need rental car or taxi to Yokohama.', badges:['jdm'], link:{text:'Route map',url:'https://maps.google.com/?q=Daikoku+Futo+PA'} },
+    ],
+    bonus:[
+      { name:'Yokohama Chinatown', note:'If the Daikoku run takes you to Yokohama — best Chinatown in Japan.', badges:['food','gem'] },
+      { name:'WOMB or Vent Aoyama (night)', note:'Check RA Japan for weekend techno/electronic lineups. Arrive midnight. Cover ¥2,000–3,500.', badges:['music','gem'], link:{text:'WOMB',url:'https://www.womb.co.jp/en/'} },
+    ],
+    backup:[
+      { name:'Toyota Automobile Museum (Nagoya detour)', note:'Best as an optional stop en route to Kyoto. Check Shinkansen schedule. World-class JDM history.', link:{text:'Museum',url:'https://www.toyota.co.jp/Museum/en/'} },
+      { name:'Akihabara day 2', note:'If you didn\'t finish the hobby crawl on Day 3.' },
+    ]
+  },
+  { id:7, city:'hakone', num:'D7', title:'Hakone — Romancecar + Ryokan Night', subtitle:'open-air museum · onsen · mt. fuji views',
+    primary:[
+      { name:'Romancecar from Shinjuku', note:'Scenic reserved-seat train → Hakone-Yumoto (~1hr 40min). Panoramic windows, mountain scenery. Book ~2 months ahead on Odakyu website.', badges:['res'], link:{text:'Book Romancecar',url:'https://www.odakyu.jp/english/romancecar/'} },
+      { name:'Hakone Open-Air Museum', note:'Not a tourist trap. Real sculpture by Picasso, Rodin, Giacometti set in mountain landscape with Fuji views. One of Japan\'s best museums.', badges:['gem'], link:{text:'Museum info',url:'https://www.hakone-oam.or.jp/en/'} },
+      { name:'Ryokan check-in + private onsen', note:'Private rotenburo (open-air bath) in your room. One of the best nights of the trip. Mt. Fuji views weather permitting.', badges:['res','gem'] },
+      { name:'Ryokan kaiseki dinner', note:'Multi-course dinner at the ryokan. Dinner-inclusive plans strongly recommended — avoids the evening restaurant hunt in a mountain town.', badges:['food','gem'] },
+    ],
+    bonus:[
+      { name:'Hakone Freepass loop (next AM)', note:'2-day pass covers cable car, ropeway, lake cruise, local buses. ~¥7,100. Buy at Shinjuku Odakyu. Do a quick loop before the Shinkansen to Kyoto.', link:{text:'Freepass info',url:'https://www.odakyu.jp/english/passes/hakone/'} },
+    ],
+    backup:[
+      { name:'Ropeway + Lake Ashi cruise', note:'If weather is clear — Fuji reflected in the lake from the boat is an exceptional shot.', link:{text:'Lake Ashi',url:'https://www.hakone-kankosen.co.jp/en/'} },
+    ]
+  },
+  { id:8, city:'kyoto', num:'D8', title:'Kyoto Arrival — Gion', subtitle:'no schedule · wander · lanterns · pontocho',
+    primary:[
+      { name:'Arrive Kyoto by Shinkansen', note:'Drop bags. Don\'t overplan tonight — Kyoto rewards wandering.', badges:[] },
+      { name:'Gion District walk', note:'Hanamikoji street at dusk. Most active around 5-7pm near the teahouses.', badges:['gem'] },
+      { name:'Fushimi Inari at dusk (optional)', note:'10,000 torii gates. Go late afternoon as day visitors leave. Walk past the crowds up the mountain. Magic in evening light.', badges:['gem'] },
+      { name:'Pontocho Alley (dinner)', note:'Narrow lantern-lit lane along the river. Eat at a small counter restaurant; avoid the tourist-facing spots with English photo menus.', badges:['food','gem'] },
+    ],
+    bonus:[
+      { name:'Yasaka Shrine at night', note:'Free, open 24/7. Magical lantern-lit shrine at the south end of Gion.', badges:['gem'] },
+      { name:'Miyagawacho hanamachi', note:'Less touristy than Gion. More authentic street feel after 6pm.', badges:['gem'] },
+    ],
+    backup:[
+      { name:'Nishiki Market', note:'Covered food market — Kyoto\'s Kitchen. Good for afternoon grazing if you arrive early.' },
+    ]
+  },
+  { id:9, city:'kyoto', num:'D9', title:'Arashiyama Day', subtitle:'bamboo · hidden temples · %arabica · monkeys',
+    primary:[
+      { name:'Bamboo Grove (before 7:30am)', note:'Overrun by 9am. Early arrival is not optional.', badges:['gem'] },
+      { name:'%Arabica Arashiyama', note:'River view, genuinely excellent coffee. Worth the brief wait.', badges:['coffee','gem'], link:{text:'%Arabica',url:'https://arabica.coffee/en/shops/japan/arashiyama/'} },
+      { name:'Okochi Sanso Garden', note:'Actor\'s private villa turned garden. Most tourists skip it. Best views in Arashiyama.', badges:['gem'] },
+      { name:'Otagi Nenbutsuji Temple', note:'Far end of Arashiyama, almost zero tourists. 1,200 mossy stone monk figures.', badges:['gem'] },
+      { name:'Iwatayama Monkey Park', note:'Steep hike but worth it — macaques + best view of Arashiyama valley.', badges:[] },
+    ],
+    bonus:[
+      { name:'Togetsukyo Bridge at sunset', note:'End the day here before heading back. Classic photo.', badges:[] },
+      { name:'Tenryū-ji Garden', note:'Stunning Zen garden with covered walkways. Good if weather turns.', link:{text:'Tenryū-ji',url:'https://www.tenryuji.com/en/'} },
+    ],
+    backup:[
+      { name:'Sagano Romantic Train', note:'Scenic railway through gorge. Book ahead on weekends.', link:{text:'Tickets',url:'https://www.sagano-kanko.co.jp/en/'} },
+    ]
+  },
+  { id:10, city:'kyoto', num:'D10', title:'East Kyoto + Okazaki + GATTACA', subtitle:'ginkaku-ji · philosophers path · art · music',
+    primary:[
+      { name:'Weekenders Coffee', note:'Hidden behind a parking lot, pure Kyoto cool. Single-origin pour-overs. Note: weekends only — plan around this.', badges:['coffee','gem'], link:{text:'Weekenders',url:'https://www.weekenderscoffee.com/'} },
+      { name:'Ginkaku-ji (Silver Pavilion)', note:'Arrive before 9am. The garden is exceptional.', badges:[] },
+      { name:'Philosopher\'s Path', note:'Walk the full canal path south. Cherry trees, quiet cafes, side shrines.', badges:['gem'] },
+      { name:'Nanzen-ji complex', note:'Along the path — massive Zen temple with a bizarre Roman aqueduct running through it.', badges:['gem'] },
+      { name:'Kaikado Café', note:'Coffee inside a 150-year-old copper and tin caddy workshop. They sell beautiful handcrafted containers. Non-negotiable for craft/design obsessives.', badges:['coffee','gem'], link:{text:'Kaikado',url:'https://www.kaikado.jp/english/cafe/'} },
+      { name:'GATTACA Kyoto (evening)', note:'Experimental music: ambient nights, modular synth collectives, folk revivalists. Check Instagram before going. Weeknight shows surprisingly packed.', badges:['music','gem'], link:{text:'@gattaca_kyoto',url:'https://www.instagram.com/gattaca_kyoto/'} },
+    ],
+    bonus:[
+      { name:'National Museum of Modern Art Kyoto', note:'Kyoto\'s undervisited museum district. Check current shows.', badges:['gem'], link:{text:'NMAK',url:'https://www.momak.go.jp/English/'} },
+      { name:'Nijō Castle', note:'"Nightingale floors" that squeak to detect assassins. Original Edo painted screens. Major historical hit most tourists skip.', badges:['gem'], link:{text:'Tickets',url:'https://nijo-jocastle.city.kyoto.lg.jp/en'} },
+    ],
+    backup:[
+      { name:'Kyoto Manga Museum', note:'Tens of thousands of manga volumes on open shelves — read anything free.', badges:['anime'] },
+      { name:'Kyoto Railway Museum', note:'Excellent for transport/history fans. Real Shinkansen on display.' },
+    ]
+  },
+  { id:11, city:'kyoto', num:'D11', title:'Fushimi Inari + Kiyomizu', subtitle:'sunrise torii · historic lanes · sake',
+    primary:[
+      { name:'Fushimi Inari Taisha (pre-dawn)', note:'Arrive by 5:30am. Upper mountain is near-empty at dawn. Take the full 4km loop — most tourists only do the bottom.', badges:['gem'] },
+      { name:'Kiyomizu-dera Temple', note:'The veranda view is the classic Kyoto shot. Mid-morning after Fushimi.', badges:[] },
+      { name:'Ninenzaka & Sannenzaka lanes', note:'Historic stone-paved lanes. Morning before noon is much calmer.', badges:[] },
+    ],
+    bonus:[
+      { name:'Tofuku-ji Temple', note:'Right near Fushimi Inari. Incredible Zen garden, dramatically undervisited.', badges:['gem'] },
+      { name:'Fushimi Sake District', note:'One of Japan\'s top sake brewing towns. Several breweries offer tastings.', badges:['food','gem'] },
+    ],
+    backup:[
+      { name:'Tea ceremony experience', note:'Small tea houses around Ninenzaka offer 30-min sessions. Usually no reservation needed.' },
+      { name:'Gion re-visit in daylight', note:'Different energy than your arrival evening.' },
+    ]
+  },
+  { id:12, city:'kinosaki', num:'D12', title:'Kinosaki Onsen — Arrival', subtitle:'yukata · bath hopping · canal walk',
+    primary:[
+      { name:'Arrive by Limited Express Kounotori', note:'~2.5hrs from Kyoto. Book seats in advance. Reserve ryokan months ahead in peak season.', badges:['res'], link:{text:'Kinosaki tourism',url:'https://www.kinosaki-spa.gr.jp/en/'} },
+      { name:'Soto-yu bathhouse circuit', note:'Ryokans include access to all 7 public bathhouses. Walk between them in yukata — this IS Kinosaki.', badges:['gem'] },
+      { name:'Mandara-yu + Gosho-no-yu', note:'Start with these two. Each has a completely different atmosphere.', badges:[] },
+      { name:'Canal walk at night in yukata', note:'The main street at night is one of the highlights of the entire trip. No agenda — just walk.', badges:['gem'] },
+    ],
+    bonus:[
+      { name:'Matsuba crab (Nov–Mar season)', note:'If traveling in season, this is world-class. Ask your ryokan. Worth planning around.', badges:['food','gem'] },
+    ],
+    backup:[
+      { name:'Genbudou Caves (nearby)', note:'Columnar basalt sea caves 30 min away. Good half-day if you want variety.' },
+    ]
+  },
+  { id:13, city:'kinosaki', num:'D13', title:'Kinosaki Onsen — Full Day', subtitle:'morning bath · temple · kaiseki dinner',
+    primary:[
+      { name:'Ichi-no-yu bathhouse (morning)', note:'Cave-style bathhouse. Best experienced first thing in the morning.', badges:['gem'] },
+      { name:'Onsenji Temple & ropeway', note:'Temple at the top of the mountain. Overlooks the whole town.', badges:[] },
+      { name:'Complete the soto-yu circuit', note:'Try to hit all 7 across your 2 days. Konotori-no-yu and Yanagi-yu are favorites.', badges:[] },
+      { name:'Ryokan kaiseki dinner', note:'Multi-course dinner in room or dining hall. One of the best meals of the trip.', badges:['food','gem'] },
+    ],
+    bonus:[
+      { name:'Kinosaki artisan shopping', note:'Small craft shops along the main street. Better than airport duty free for gifts.', badges:['gem'] },
+    ],
+    backup:[
+      { name:'Tamba Sasayama day trip', note:'Old castle town accessible from Kinosaki if you want to explore beyond baths.' },
+    ]
+  },
+  { id:14, city:'osaka', num:'D14', title:'Osaka — Castle + Dotonbori', subtitle:'history · markets · street food · neon',
+    primary:[
+      { name:'Osaka Castle', note:'Museum inside is strong. Park grounds excellent for a morning walk.', badges:[] },
+      { name:'Kuromon Ichiba Market', note:'Osaka\'s kitchen market. Fresh takoyaki, wagyu skewers, sashimi.', badges:['food','gem'] },
+      { name:'Mel Coffee Roasters', note:'Small café + roastery, Bonanza Berlin connection, founded by a Melbourne-trained couple. Serious craft in a small space.', badges:['coffee','gem'], link:{text:'@melcoffeeroasters',url:'https://www.instagram.com/melcoffeeroasters/'} },
+      { name:'Dotonbori at night', note:'The Glico Man. The crab signs. The canal. Classic and genuinely electric.', badges:[] },
+    ],
+    bonus:[
+      { name:'America-mura (Amemura)', note:'Osaka youth culture district. More raw than Tokyo\'s equivalent. Dense secondhand shops and young designers.', badges:['gem'] },
+      { name:'Hozenji Yokocho alley', note:'Tiny atmospheric alley near Dotonbori with old restaurants and moss-covered statue.', badges:['gem'] },
+      { name:'National Museum of Art Osaka', note:'Underground museum, architecturally striking, serious contemporary programming.', badges:['gem'], link:{text:'NMAO',url:'https://www.nmao.go.jp/english/'} },
+    ],
+    backup:[
+      { name:'Umeda Sky Building', note:'Unusual "floating garden" outdoor observation deck.' },
+    ]
+  },
+  { id:15, city:'osaka', num:'D15', title:'Nara Day Trip', subtitle:'deer · great buddha · lantern path',
+    primary:[
+      { name:'Nara Park (morning)', note:'~45 min from Osaka by Kintetsu line. The deer will headbutt you for crackers.', badges:[] },
+      { name:'Todai-ji Great Buddha Hall', note:'One of the largest wooden structures on Earth. Budget 1-1.5 hours.', badges:[], link:{text:'Todai-ji info',url:'https://www.todaiji.or.jp/english/'} },
+      { name:'Kasuga Taisha Shrine', note:'Hundreds of stone and bronze lanterns lining the forested path.', badges:['gem'] },
+      { name:'Naramachi old merchant quarter', note:'Well-preserved Edo townhouses, craft shops, quiet cafes. Stay until dusk.', badges:['gem'] },
+    ],
+    bonus:[
+      { name:'Isuien & Yoshikien Gardens', note:'Peaceful Japanese gardens overlooking Todai-ji. Dramatically undervisited.', badges:['gem'] },
+      { name:'Kofuku-ji pagoda', note:'Five-story pagoda right in the park. Often overlooked by visitors focused on the deer.', badges:[] },
+    ],
+    backup:[
+      { name:'Osaka Aquarium (Kaiyukan)', note:'One of the world\'s best aquariums. Whale shark on display. Good rain day option.' },
+    ]
+  },
+  { id:16, city:'osaka', num:'D16', title:'Den Den Town + Vinyl + Shinsekai', subtitle:'anime · records · retro district · farewell dinner',
+    primary:[
+      { name:'Den Den Town (Nipponbashi)', note:'Osaka\'s Akihabara. For scale models and retro games often better stock and prices than Tokyo.', badges:['anime','gem'] },
+      { name:'Joshin Super Kids Land', note:'Massive hobby and model kit retailer. Tamiya, Bandai, Hasegawa all stocked.', badges:['anime'] },
+      { name:'Mandarake Osaka', note:'Used figures, vintage manga, retro hardware. Best treasure hunting of the trip.', badges:['anime','gem'] },
+      { name:'Disk Union Osaka + local record shops', note:'Shinsaibashi area. Strong electronic and hip-hop record culture here.', badges:['music'], link:{text:'Disk Union',url:'https://diskunion.net/'} },
+      { name:'Shinsekai district (evening)', note:'Retro entertainment district from the 1910s. Kushikatsu bars, faded mid-century energy. Perfect final Osaka dinner.', badges:['food','gem'] },
+    ],
+    bonus:[
+      { name:'Conpass live house', note:'Osaka\'s underground live house institution. Kansai scenes are tightly knit — crowds here move more, talk more.', badges:['music','gem'], link:{text:'@conpass_osaka',url:'https://www.instagram.com/conpass_osaka/'} },
+      { name:'Tsuruhashi Koreatown', note:'Huge covered market with yakiniku restaurants. Very local atmosphere.', badges:['food','gem'] },
+    ],
+    backup:[
+      { name:'Universal Studios Japan — Nintendo World', note:'Mario Kart ride, Donkey Kong area. Must book well in advance.', badges:['res','anime'], link:{text:'USJ tickets',url:'https://www.usj.co.jp/web/en/us'} },
+      { name:'Spa World', note:'Giant public bath complex near Den Den Town. Roman and Asian themed floors.', badges:[] },
+    ]
+  },
+  { id:17, city:'tokyo2', num:'D17', title:'Tokyo Return — Art + Records + Fly', subtitle:'mori art · pigment tokyo · big love · departure',
+    primary:[
+      { name:'Shinkansen Osaka → Tokyo', note:'~2.5hrs, covered by JR Pass. Check into Tokyo — Tomigaya or Harajuku area recommended.', badges:[] },
+      { name:'Mori Art Museum', note:'53rd floor of Roppongi Hills, one of Japan\'s best contemporary art venues. Combined ticket includes the Tokyo City View observation deck.', badges:['gem'], link:{text:'Mori Art',url:'https://www.mori.art.museum/en/'} },
+      { name:'21_21 Design Sight', note:'Tadao Ando–designed design museum in Roppongi — consistently excellent, never crowded, beautifully minimal building.', badges:['gem'], link:{text:'21_21',url:'https://www.2121designsight.jp/en/'} },
+      { name:'Big Love Records, Harajuku', note:'Up three flights of stairs, craft IPA on tap. Final crate dig.', badges:['music','gem'], link:{text:'Big Love',url:'https://bigloverecords.jp/'} },
+      { name:'Ship vinyl + purchases home', note:'Yamato takkyubin from hotel directly home (~¥2,000/bag). Arrives in 1–2 weeks. Far cheaper than excess baggage. Set up at hotel front desk before heading to airport.', badges:[], link:{text:'Yamato info',url:'https://www.yamatogroup.co.jp/en/services/ta-q-bin/'} },
+    ],
+    bonus:[
+      { name:'Pigment Tokyo, Shinagawa', note:'Over 4,500 types of pigments, brushes, and materials from around the world. Part shop, part installation. Genuinely beautiful space even if you\'re not a painter.', badges:['gem'], link:{text:'Pigment',url:'https://pigment.tokyo/en/'} },
+      { name:'Nonbei Yokocho, Shibuya (last night)', note:'Showa-era lantern-lit alley, preserved since the 1940s, right next to Shibuya Station. Less famous than Golden Gai, more intimate, equally atmospheric.', badges:['food','gem'] },
+    ],
+    backup:[
+      { name:'Koffee Mameya, Omotesando', note:'Specialty coffee boutique. Expert-recommended single-origin light roasts. Standing only, completely intentional.', badges:['coffee','gem'], link:{text:'Koffee Mameya',url:'https://koffee-mameya.com/en/'} },
+      { name:'Fly home from NRT', note:'Narita Express from Shinjuku or Tokyo Station → Narita. ~60–80 min. Covered by JR Pass. Allow 3hrs before departure. Terminal 2 has excellent duty-free — Royce chocolate, Japanese whisky, Onitsuka Tiger.' },
+    ]
+  },
+];
+
+const CITIES = [
+  { key:'tokyo',    label:'Tokyo I',         days:'6 days' },
+  { key:'hakone',   label:'Hakone',           days:'1 night' },
+  { key:'kyoto',    label:'Kyoto',            days:'4 days' },
+  { key:'kinosaki', label:'Kinosaki Onsen',   days:'2 days' },
+  { key:'osaka',    label:'Osaka',            days:'3 days' },
+  { key:'tokyo2',   label:'Tokyo II (Return)',days:'1 day' },
+];
+
+// ── STATE ──
+let checked   = {};
+let distances = {};
+let openDays  = new Set();
+let bkChecked = {};
+let activeFilter = 'all';
+let syncReady = false;
+
+const BK_TOTAL = 20;
+
+function setSyncStatus(state) {
+  const dot = document.getElementById('sync-dot');
+  const lbl = document.getElementById('sync-label');
+  if (!dot) return;
+  dot.className = 'sync-dot ' + state;
+  const msgs = { synced:'Synced — changes appear on both phones', syncing:'Saving…', error:'Offline — changes saved locally', connecting:'Connecting…' };
+  lbl.textContent = msgs[state] || state;
+}
+
+async function init() {
+  setSyncStatus('connecting');
+  try {
+    const lc = localStorage.getItem('jp25_checked');
+    const ld = localStorage.getItem('jp25_dist');
+    const lo = localStorage.getItem('jp25_open');
+    const lb = localStorage.getItem('jp25_bk');
+    if (lc) checked   = JSON.parse(lc);
+    if (ld) distances = JSON.parse(ld);
+    if (lo) openDays  = new Set(JSON.parse(lo));
+    if (lb) bkChecked = JSON.parse(lb);
+  } catch(e) {}
+
+  renderAll();
+  updateBkProg();
+
+  try {
+    const state = await loadFromDB();
+    if (state.checked)   checked   = state.checked;
+    if (state.distances) distances = state.distances;
+    if (state.bkChecked) { bkChecked = state.bkChecked; restoreBkChecks(); updateBkProg(); }
+    syncReady = true;
+    setSyncStatus('synced');
+    renderAll();
+    setInterval(pollChanges, 8000);
+  } catch(e) {
+    setSyncStatus('error');
+    syncReady = false;
+  }
+}
+
+let lastPollHash = '';
+async function pollChanges() {
+  try {
+    const state = await loadFromDB();
+    const hash = JSON.stringify(state);
+    if (hash !== lastPollHash) {
+      lastPollHash = hash;
+      if (state.checked)   checked   = state.checked;
+      if (state.distances) distances = state.distances;
+      if (state.bkChecked) { bkChecked = state.bkChecked; restoreBkChecks(); updateBkProg(); }
+      renderAll();
+      setSyncStatus('synced');
+    }
+  } catch(e) {}
+}
+
+function persistLocal() {
+  try {
+    localStorage.setItem('jp25_checked',   JSON.stringify(checked));
+    localStorage.setItem('jp25_dist',      JSON.stringify(distances));
+    localStorage.setItem('jp25_open',      JSON.stringify([...openDays]));
+    localStorage.setItem('jp25_bk',        JSON.stringify(bkChecked));
+  } catch(e) {}
+}
+
+async function persistRemote() {
+  if (!syncReady) return;
+  setSyncStatus('syncing');
+  try {
+    await Promise.all([
+      saveKey('checked',   checked),
+      saveKey('distances', distances),
+      saveKey('bkChecked', bkChecked),
+    ]);
+    setSyncStatus('synced');
+  } catch(e) {
+    setSyncStatus('error');
+  }
+}
+
+// ── HELPERS ──
+function allActsForDay(day) { return [...(day.primary||[]), ...(day.bonus||[])]; }
+
+function updateStats() {
+  let totalActs=0, checkedActs=0, totalKm=0, doneDays=0;
+  DAYS.forEach(day => {
+    const acts = allActsForDay(day);
+    acts.forEach((_,i) => { totalActs++; if (checked[`${day.id}-${i}`]) checkedActs++; });
+    totalKm += parseFloat(distances[day.id]||0);
+    if (acts.length && acts.every((_,i)=>checked[`${day.id}-${i}`])) doneDays++;
+  });
+  const km = Math.round(totalKm);
+  document.getElementById('stat-done').textContent  = doneDays;
+  document.getElementById('stat-acts').textContent  = checkedActs;
+  document.getElementById('stat-total-acts').textContent = '/ '+totalActs;
+  document.getElementById('stat-km').textContent    = km;
+  document.getElementById('hstat-done').textContent = doneDays;
+  document.getElementById('hstat-acts').textContent = checkedActs;
+  document.getElementById('hstat-km').textContent   = km;
+}
+
+function ringHtml(dayId, total, done) {
+  const r=13, circ=2*Math.PI*r, pct=total?done/total:0, offset=circ-pct*circ;
+  const color = (done===total&&total>0)?'#5a9460':'#c9a84c';
+  return `<div class="progress-ring-wrap"><svg width="32" height="32" viewBox="0 0 32 32"><circle class="progress-ring-bg" cx="16" cy="16" r="${r}" stroke-width="2"/><circle class="progress-ring-fg" cx="16" cy="16" r="${r}" stroke-width="2" stroke="${color}" stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${offset.toFixed(1)}"/></svg><div class="ring-label">${done}/${total}</div></div>`;
+}
+
+function badgeHtml(badges) {
+  if (!badges||!badges.length) return '';
+  const labels={res:'🎟 reservation',gem:'✦ hidden gem',jdm:'🏎 JDM',anime:'⛩ hobby',food:'🍜 food',music:'🎵 music',coffee:'☕ coffee'};
+  return '<div class="badge-row">'+badges.map(b=>`<span class="badge ${b}">${labels[b]||b}</span>`).join('')+'</div>';
+}
+
+function dayHasFilter(day, f) {
+  if (f==='all') return true;
+  if (['tokyo','kyoto','kinosaki','osaka','hakone','tokyo2'].includes(f)) return day.city===f;
+  return allActsForDay(day).some(a=>a.badges&&a.badges.includes(f));
+}
+
+function renderActRows(day, acts, offset) {
+  return acts.map((act,i) => {
+    const key=`${day.id}-${offset+i}`, isChecked=!!checked[key];
+    return `<div class="act-row${isChecked?' done':''}">
+      <div class="checkbox${isChecked?' checked':''}" onclick="toggleCheck('${key}',${day.id})" role="checkbox" aria-checked="${isChecked}" tabindex="0" aria-label="${act.name}"></div>
+      <div class="act-content">
+        <div class="act-name${isChecked?' crossed':''}">${act.name}</div>
+        ${act.note?`<div class="act-note">${act.note}</div>`:''}
+        ${act.link?`<a class="act-link" href="${act.link.url}" target="_blank" rel="noopener">${act.link.text}</a>`:''}
+        ${badgeHtml(act.badges||[])}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderDay(day) {
+  const allActs=allActsForDay(day), done=allActs.filter((_,i)=>checked[`${day.id}-${i}`]).length, total=allActs.length;
+  const isOpen=openDays.has(day.id), allDone=total>0&&done===total, plen=(day.primary||[]).length;
+  return `<div class="day-card${isOpen?' open':''}${allDone?' all-done':''}" id="day-${day.id}">
+    <div class="day-header" onclick="toggleDay(${day.id})">
+      <div class="day-num ${day.city}">${day.num}</div>
+      <div class="day-title-block">
+        <div class="day-title">${day.title}</div>
+        <div class="day-subtitle">${day.subtitle}</div>
+      </div>
+      <div class="day-meta">
+        ${ringHtml(day.id,total,done)}
+        <span class="chevron-icon">↓</span>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="sect-title">Primary plan</div>
+      ${renderActRows(day, day.primary||[], 0)}
+      ${day.bonus&&day.bonus.length?`<div class="bonus-block"><div class="bonus-label">✦ Bonus picks</div>${renderActRows(day,day.bonus,plen)}</div>`:''}
+      ${day.backup&&day.backup.length?`<div class="backup-block"><div class="backup-label">☂ Backup / if plans change</div>${day.backup.map(b=>`<div class="backup-row"><div class="backup-name">${b.name}</div>${b.note?`<div class="backup-note">${b.note}</div>`:''} ${b.link?`<a class="act-link" style="font-size:11px" href="${b.link.url}" target="_blank" rel="noopener">${b.link.text}</a>`:''}</div>`).join('')}</div>`:''}
+      <div class="dist-row">
+        <span class="dist-label">km walked / traveled today</span>
+        <input class="dist-input" type="number" min="0" step="0.5" value="${distances[day.id]||''}" placeholder="0" oninput="updateDist(${day.id},this.value)">
+        <span class="dist-unit">km</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderAll() {
+  let html='';
+  CITIES.forEach(city=>{
+    const cityDays=DAYS.filter(d=>d.city===city.key&&dayHasFilter(d,activeFilter));
+    if(!cityDays.length) return;
+    html+=`<div class="city-section"><div class="city-header"><span class="city-name ${city.key}">${city.label}</span><div class="city-line"></div><span class="city-days-count">${city.days}</span></div>${cityDays.map(d=>renderDay(d)).join('')}</div>`;
+  });
+  document.getElementById('main-itinerary').innerHTML=html;
+  updateStats();
+}
+
+// ── BOOKING CHECKLIST ──
+function updateBkProg() {
+  const n = Object.values(bkChecked).filter(Boolean).length;
+  const txt = document.getElementById('prog-txt');
+  const fill = document.getElementById('prog-fill');
+  if (txt) txt.textContent = n + ' of ' + BK_TOTAL + ' done';
+  if (fill) fill.style.width = (n / BK_TOTAL * 100) + '%';
+}
+
+function tickBk(id) {
+  bkChecked[id] = !bkChecked[id];
+  const item = document.getElementById(id);
+  if (item) {
+    const chk = item.querySelector('.bk-check');
+    if (chk) chk.classList.toggle('checked', !!bkChecked[id]);
+    item.classList.toggle('done-row', !!bkChecked[id]);
+  }
+  persistLocal();
+  updateBkProg();
+  clearTimeout(pending['bk']);
+  pending['bk'] = setTimeout(persistRemote, 800);
+}
+
+function restoreBkChecks() {
+  Object.entries(bkChecked).forEach(([id, done]) => {
+    if (!done) return;
+    const item = document.getElementById(id);
+    if (!item) return;
+    item.querySelector('.bk-check')?.classList.add('checked');
+    item.classList.add('done-row');
+  });
+}
+
+function toggleBkPhase(id) {
+  const ph = document.getElementById(id);
+  if (!ph) return;
+  ph.classList.toggle('open');
+}
+
+// ── ITINERARY ACTIONS ──
+function toggleDay(id) {
+  if(openDays.has(id)) openDays.delete(id); else openDays.add(id);
+  persistLocal();
+  const card=document.getElementById('day-'+id);
+  if(card) card.classList.toggle('open',openDays.has(id));
+}
+
+let saveTimer;
+function toggleCheck(key, dayId) {
+  checked[key]=!checked[key];
+  persistLocal();
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(persistRemote, 800);
+
+  const allActs=allActsForDay(DAYS.find(d=>d.id===dayId));
+  const done=allActs.filter((_,i)=>checked[`${dayId}-${i}`]).length;
+  const card=document.getElementById('day-'+dayId);
+  if(card){
+    const ring=card.querySelector('.progress-ring-wrap');
+    if(ring) ring.outerHTML=ringHtml(dayId,allActs.length,done);
+    card.classList.toggle('all-done',done===allActs.length&&allActs.length>0);
+  }
+  const cb=document.querySelector(`[onclick*="'${key}'"]`);
+  if(cb){
+    const row=cb.closest('.act-row');
+    if(row){
+      row.classList.toggle('done',!!checked[key]);
+      const nm=row.querySelector('.act-name'); if(nm) nm.classList.toggle('crossed',!!checked[key]);
+      cb.classList.toggle('checked',!!checked[key]); cb.setAttribute('aria-checked',!!checked[key]);
+    }
+  }
+  updateStats();
+}
+
+let distTimer;
+function updateDist(id, val) {
+  distances[id]=parseFloat(val)||0;
+  persistLocal();
+  clearTimeout(distTimer);
+  distTimer=setTimeout(persistRemote, 1200);
+  updateStats();
+}
+
+function setFilter(f, btn) {
+  activeFilter=f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAll();
+}
+
+// ── TABS ──
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('scroll-top').classList.toggle('visible',window.scrollY>300);
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.classList.contains('checkbox')) e.target.click();
+});
+
+init();
+restoreBkChecks();
+</script>
+</body>
+</html>
